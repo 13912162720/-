@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>move</title>
+	<script type="text/javascript" src="./jquery.min.js"></script>
+	<script type="text/javascript" src="./jqueryrotate.js"></script>
+</head>
+<style type="text/css">
+	.new-add{
+		width: 10px;height: 10px;background-color: black;display: inline-block;position: absolute;
+	}
+</style>
+<body>
+	<div id="d1" style="width: 10px;height: 10px;display: inline-block;position: absolute;"><img id="img1" src="./cry.png"></div>
+	<div id="d2"></div>
+</body>
+<script type="text/javascript">
+// function move1(){
+// 	$("#d1").animate({marginLeft:'1000px'},4000);
+// }
+// $("#d1").change(function(){
+// 	$("#d2").html($("#d1").css('margin-left')+'px<br/>'+$("#d1").css('margin-top')+'px');
+// })
+var x = 0;
+var s = 0;
+var y = 0;
+var stat = 1;
+$("#d1").click(function(){
+	var r = parseInt(Math.random()*500) + x;
+	var t = parseInt(Math.random()*500);
+	var m =0;
+	$("#img1").on('click',function(){
+		clearInterval(even)
+	})
+	$("#d1").css('margin-left',r +'px');
+	var even = setInterval(function(){
+		for (var i = 0; i < 3; i++) {
+			x = x+0.25;
+			s = s+0.5;
+			y = (x-500)*(x-500)/200+t;
+			if (stat) {
+				m = y;
+				stat = 0;
+				// console.log(m+':'+y)
+			}
+			if (y>m) {
+				//console.log(y)
+				clearInterval(even)
+				reset()
+			}else{
+				//console.log(m+':'+y)
+				//$('body').append('<div class="new-add" style="left:'+x+'px;top:'+y+'px"></div>')
+				$("#d1").css({'left':x+'px','top':y+'px'});
+				$("#img1").rotate(s);
+			}
+		}
+		// move12(t,even);
+		// move12(t,even);
+	},1);
+	//$("#d1").unbind('click');
+
+})
+
+// function move12(t,even)
+// {
+	
+// 	x = x+0.25;
+// 	s = s+0.5;
+// 	y = (x-440)*(x-440)/200+t;
+// 	if (y>900) {
+// 		clearInterval()
+// 	}else{
+// 		//$('body').append('<div class="new-add" style="left:'+x+'px;top:'+y+'px"></div>')
+// 		$("#d1").css({'left':x+'px','top':y+'px'});
+// 		$("#img1").rotate(s);
+// 	}
+// }
+
+function reset(){
+	x=0;
+	s=0;
+	y=0;
+	stat=1;
+}
+</script>
+</html>

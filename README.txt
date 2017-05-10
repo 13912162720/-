@@ -1,1 +1,1 @@
-git is already install.    !!!
+请自行在move.html文件中引用jquery.js和jqueryrotate.js两个js文件，也可以将这两个文件放在move.html的同级文件夹中，自动加载。
